@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/48e20179-b11e-4d71-a0d6-fb4ff4e20062/resourceGroups/appsvc_linux_westeurope/providers/Microsoft.Web/sites/secfrontend",
+    "appService.deploySubpath": "tces"
+}
