@@ -7,7 +7,7 @@ const VanActions = ({ onReportSubmit, onDropOff, id, history_id, pick_up_mileage
   const [mode, setMode] = useState('');
   const [issue, setIssue] = useState('');
 
-  const baseUrl = `http://localhost:4000`;
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
 
   const handleCancelAll = () => {
     setMode('');

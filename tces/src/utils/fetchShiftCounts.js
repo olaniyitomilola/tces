@@ -1,9 +1,9 @@
 export async function fetchShiftCounts(startDate,endDate){
-    const baseUrl = 'https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net/api'
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
     try {
         const start = startDate.toLocaleDateString('en-CA').slice(0,10)
         const end = endDate.toLocaleDateString('en-CA').slice(0,10)
-        const shifts = await fetch(`${baseUrl}/projects/all?startDate=${start}&endDate=${end}`
+        const shifts = await fetch(`${baseUrl}/api/projects/all?startDate=${start}&endDate=${end}`
         )
 
         if(!shifts.ok) throw new Error('Unable to fetch shifts')

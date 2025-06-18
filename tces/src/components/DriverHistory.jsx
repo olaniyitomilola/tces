@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const baseUrl = 'http://localhost:4000';
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
 
 const DriverHistory = ({ refreshKey }) => {
   const { id: vehicleId } = useParams();
@@ -68,7 +68,7 @@ const DriverHistory = ({ refreshKey }) => {
             </div>
             <div>
               <span className="font-medium">Pick-Up Date: </span>
-              {new Date(currentEntry.pickup_date).toLocaleDateString()}
+              {new Date(currentEntry.pickup_date).toLocaleString()}
             </div>
             <div>
               <span className="font-medium">Pick-Up Mileage: </span>
@@ -113,12 +113,12 @@ const DriverHistory = ({ refreshKey }) => {
                   <td className="px-4 py-3 whitespace-nowrap">{entry.driver_name}</td>
                   <td className="px-4 py-3 whitespace-nowrap">
                     {entry.pickup_date
-                      ? new Date(entry.pickup_date).toLocaleDateString()
+                      ? new Date(entry.pickup_date).toLocaleString()
                       : '—'}
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">
                     {entry.dropoff_date
-                      ? new Date(entry.dropoff_date).toLocaleDateString()
+                      ? new Date(entry.dropoff_date).toLocaleString()
                       : '—'}
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">

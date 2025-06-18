@@ -31,7 +31,7 @@ const StaffDetails = () => {
   const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem('user'));
   const staffList = JSON.parse(localStorage.getItem('staff')) || [];
-  const baseUrl = 'https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net';
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const testingUrl = 'http://localhost:4000'; // For local testing, change as needed
   
   // Use id comparison as strings (if needed)

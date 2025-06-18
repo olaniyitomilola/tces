@@ -9,7 +9,7 @@ const Van = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
-  const baseUrl = 'https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net';
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
 
 
   useEffect(() => {

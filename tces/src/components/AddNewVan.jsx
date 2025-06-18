@@ -7,7 +7,7 @@ const AddNewVan = ({ onVanAdded }) => {
   const [currentMileage, setCurrentMileage] = useState('');
   const [mileageError, setMileageError] = useState('');
   const [error, setError] = useState('');
-  const baseUrl = 'https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net';
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 
   const handleFetchVan = async (e) => {

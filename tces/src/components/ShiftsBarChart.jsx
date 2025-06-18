@@ -9,13 +9,13 @@ import {
 
 const ShiftsBarChart = ({days}) => {
   const data = [
-    { day: 'Sat', count: days.Saturday },
-    { day: 'Sun', count: days.Sunday },
-    { day: 'Mon', count: days.Monday },
-    { day: 'Tue', count: days.Tuesday },
-    { day: 'Wed', count: days.Wednesday },
-    { day: 'Thu', count: days.Thursday },
-    { day: 'Fri', count: days.Friday },
+    { day: 'Sat', count: days.Saturday || 0 },
+    { day: 'Sun', count: days.Sunday || 0 },
+    { day: 'Mon', count: days.Monday || 0 },
+    { day: 'Tue', count: days.Tuesday || 0 },
+    { day: 'Wed', count: days.Wednesday || 0 },
+    { day: 'Thu', count: days.Thursday || 0},
+    { day: 'Fri', count: days.Friday || 0 },
   ];
 
   return (

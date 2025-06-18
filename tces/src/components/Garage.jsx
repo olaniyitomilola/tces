@@ -15,7 +15,7 @@ const Garage = () => {
   const [selectedGarage, setSelectedGarage] = useState(null);
   const [viewingAppointments, setViewingAppointments] = useState(false);
   const [editingGarage, setEditingGarage] = useState(null);
-  const baseUrl = 'https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net';
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 
   useEffect(() => {

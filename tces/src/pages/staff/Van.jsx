@@ -9,7 +9,7 @@ export default function Van() {
   const navigate = useNavigate();
   const [myVans, setMyVans] = useState([]);
   const [loading, setLoading] = useState(true);
-  const baseUrl = `http://localhost:4000`;
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
@@ -58,6 +58,10 @@ export default function Van() {
       });
       if (!response.ok) throw new Error("Failed to pick up van");
       toast.success(`Picked up ${van.registration} at ${mileage} miles`);
+      let newVan = await response.json()
+      newVan = newVan[0];
+      van.history_id = newVan.id
+     
       navigate(`${van.id}`, { state: { van } });
     } catch (err) {
       console.error(err);

@@ -7,6 +7,7 @@ const StaffEdit = () => {
   const navigate = useNavigate();
   const staffList = JSON.parse(localStorage.getItem('staff')) || [];
   const staffMember = staffList.find((s) => s.id === id);
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const [form, setForm] = useState({ ...staffMember });
 

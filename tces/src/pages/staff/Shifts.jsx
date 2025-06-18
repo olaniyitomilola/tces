@@ -2,10 +2,18 @@ import React from 'react';
 
 const Shifts = () => {
     return (
-        <div>
-            <h1>Staff Shifts</h1>
-            <p>Welcome to the Staff Shifts page. Here you can manage and view staff shift schedules.</p>
-        </div>
+         <div className="flex flex-col items-center justify-center min-h-screen bg-orange-50 text-gray-800 p-6">
+      <h1 className="text-3xl font-bold mb-4">Shifts</h1>
+      <p className="text-lg mb-8">This is the  page for shifts-related activities.</p>
+
+      {/* Coming Soon Animation */}
+      <div className="relative text-4xl font-semibold text-orange-600">
+        <span className="animate-pulse">🚧 Coming Soon...</span>
+      </div>
+    </div>
+        
+        
+        
     );
 };
 

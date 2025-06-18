@@ -1,7 +1,7 @@
 // src/utils/fetchCounts.js
 
 export async function fetchCounts() {
-  var baseUrl = 'https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net'
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
     try {
       // fire off all three requests in parallel
       const [clientsRes, vansRes, staffRes] = await Promise.all([

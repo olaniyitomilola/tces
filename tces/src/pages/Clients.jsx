@@ -15,11 +15,13 @@ const Clients = () => {
   const [selectedClient, setSelectedClient] = useState(null);
   const [viewingClient, setViewingClient] = useState(null);
 
+  const baseURL = import.meta.env.VITE_API_BASE_URL
+
   // fetch clients on mount
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch('https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net/api/client');
+        const res = await fetch(`${baseURL}/api/client`);
         if (!res.ok) throw new Error('Failed to fetch clients');
         setClients(await res.json());
       } catch (err) {
@@ -32,7 +34,7 @@ const Clients = () => {
   const handleAddClient = async () => {
     if (!newClient.trim()) return;
     try {
-      const res = await fetch('https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net/api/client', {
+      const res = await fetch(`${baseURL}/api/client`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newClient.trim() })

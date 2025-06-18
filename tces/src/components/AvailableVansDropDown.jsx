@@ -12,8 +12,10 @@ export default function AvailableVansDropdown({ onSelect }) {
   // New state: which van was clicked, and the entered mileage
   const [selectedVan, setSelectedVan] = useState(null);
   const [mileage, setMileage] = useState('');
+  const hasFetchedVans = useRef(false);
+  const hasAttemptedFetch = useRef(false)
 
-  const baseUrl = 'http://localhost:4000';
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
   const containerRef = useRef();
 
   const toggleDropdown = () => {
@@ -26,10 +28,11 @@ export default function AvailableVansDropdown({ onSelect }) {
 
   // Fetch available vans when dropdown opens (and we haven't loaded them yet)
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || hasFetchedVans.current || hasAttemptedFetch.current) return;
     if (vans.length || loading) return;
 
     setLoading(true);
+    hasAttemptedFetch.current = true
     fetch(`${baseUrl}/api/vehicles/available`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch available vans');
@@ -38,6 +41,7 @@ export default function AvailableVansDropdown({ onSelect }) {
       .then(data => {
         // assume the endpoint returns { data: [...] }
         setVans(data.data || []);
+        hasFetchedVans.current = true;
         setError('');
       })
       .catch(err => {

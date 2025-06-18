@@ -15,7 +15,7 @@ const getCurrentRailWeek = (weeks) => {
   const todayDateOnly = toDateOnly(new Date());
 
   return (
-    weeks.find(w => {
+    weeks.find(w => { 
       // turn both w.start and w.end into Date‐objects at midnight
       const startDate = toDateOnly(w.start);
       const endDate   = toDateOnly(w.end);
@@ -37,7 +37,7 @@ const WeekPlanner = () => {
   const [staff,setStaff] = useState([]);  
   const [assignedStaff, setAssignedStaff] = useState({});
   const railWeeks = useMemo(() => getRailWeeks(new Date().getFullYear()), []);
-  const baseUrl = 'https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net';
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
 
  // 1. Once railWeeks arrives, default the dropdown to current week
 useEffect(() => {

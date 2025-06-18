@@ -1,7 +1,7 @@
 // src/utils/fetchVehicleAlerts.js
 
 export async function fetchVehicleAlerts() {
-  const baseUrl = 'https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net';
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
     // fetch all vans
     const res = await fetch(`${baseUrl}/api/vehicles`);
     if (!res.ok) throw new Error('Failed to fetch vehicles');

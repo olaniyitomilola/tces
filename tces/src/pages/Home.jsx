@@ -33,6 +33,7 @@ const Home = () => {
   });
 
   useEffect( () => {
+    console.log(import.meta.env)
     fetchCounts().then(setCounts);
     fetchVehicleAlerts().then(setAlerts).catch(console.error);
     
@@ -43,19 +44,21 @@ const Home = () => {
   
     fetchShiftCounts(selectedWeek.start, selectedWeek.end)
       .then((data) => {
-        setShifts(data.count);
-        setClientShifts(data.clients);
+
+        if(data.count){
+          setShifts(data.count);
+           setClientShifts(data.clients);
+
+        }
+        
       })
       .catch(console.error);
   }, [selectedWeek]);
   
-
-  
-
   const stats = useMemo(() => ([
-    { title: 'Clients',       value: counts.clientCount },
-    { title: 'Vehicles',      value: counts.vanCount    },
-    { title: 'Shifts for Week',  value: shifts.total /* TODO */    },
+    { title: 'Clients',       value: counts.clientCount},
+    { title: 'Vehicles',      value: counts.vanCount  },
+    { title: 'Shifts for Week',  value: shifts.total },
     { title: 'Staff Members', value: counts.staffCount  },
   ]), [counts]);
 

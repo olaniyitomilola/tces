@@ -28,7 +28,7 @@ const bool = (val) => val === true || val === 'true';
 const Account = () => {
   const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem('user'));
-  const baseUrl = 'https://backend-cpgmbqdydya8d6et.westeurope-01.azurewebsites.net';
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const testingUrl = 'http://localhost:4000'; // For local testing, change as needed
   const [staff, setStaff] = useState(null)
   const [loading, setLoading] = useState(true);
@@ -40,7 +40,7 @@ const Account = () => {
         setLoading(true);
       try {
         console.log(currentUser.id)
-        const response = await fetch(`${testingUrl}/api/staff/${currentUser.id}`);
+        const response = await fetch(`${baseUrl}/api/staff/${currentUser.id}`);
         if (!response.ok) throw new Error('Failed to fetch staff details');
         const data = await response.json();
         localStorage.setItem('staff', JSON.stringify(data)); // Update local storage
